@@ -28,8 +28,8 @@ BACKEND="${BACKEND:-openrouter}"
 PERSONA_IDS="${PERSONA_IDS:-18}"          # smallest chat history in the 10p split
 MAX_ITEMS="${MAX_ITEMS:-}"                # empty = all questions for the persona
 RETRIEVE_K="${RETRIEVE_K:-10}"
-PATCH_TOP_K="${PATCH_TOP_K:-3}"
-MIN_PATCH_SIMILARITY="${MIN_PATCH_SIMILARITY:-0.4}"
+PATCH_TOP_K="${PATCH_TOP_K:-8}"
+MIN_PATCH_SIMILARITY="${MIN_PATCH_SIMILARITY:-0.2}"
 BATCH="${BATCH:-1}"
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
