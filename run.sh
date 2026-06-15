@@ -78,6 +78,11 @@ export BENCHMARK_FILE="data/personamem-evo-10p.csv"
 export API_BASE="https://openrouter.ai/api/v1"
 export OUTPUT_DIR="results"
 export RESUME=1 FORCE_REINGEST_PATCHES=0
+# Match preference-aware prompting on the baseline so the head-to-head isolates
+# the EvoMem patch-trace contribution, not the `full` vs `none` A-MEM prompt
+# formatting. Both arms now use the same `full` preference-aware prompts; only
+# the patch trace differs between them.
+export ROBUST_PREFERENCE_AWARE_LEVEL=full
 [[ -n "$MAX_ITEMS" ]] && export MAX_ITEMS
 
 echo ">> running robust baseline + EvoMem patch (this calls the hosted LLM)…"
