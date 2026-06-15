@@ -135,7 +135,7 @@ CONFIG_REQUIRE_PREF_CHANGE="0"
 
 # Ask an LLM to further filter candidate patches before use.
 # Usually off unless you are testing that variant.
-CONFIG_LLM_PATCH_FILTER="0"
+CONFIG_LLM_PATCH_FILTER="1"
 
 # Enable gold-patch injection mode.
 # This is for analysis / oracle-style evaluation, not the standard EvoMem run.
