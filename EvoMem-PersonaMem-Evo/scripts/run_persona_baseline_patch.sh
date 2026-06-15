@@ -111,7 +111,7 @@ CONFIG_PATCH_TOP_K="3"
 # How patch evidence is used.
 # always = always inject retrieved patches into the answer context
 # gated  = first ask the model whether patch detail is needed
-CONFIG_PATCH_USAGE="always"
+CONFIG_PATCH_USAGE="gated"
 
 # Minimum cosine similarity threshold for retrieved patches.
 # Larger values filter more aggressively.
