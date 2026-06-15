@@ -25,7 +25,7 @@ set -euo pipefail
 # ---- knobs (overridable from the environment) -------------------------------
 MODEL="${MODEL:-openai/gpt-4o-mini}"      # real, cheap OpenRouter model
 BACKEND="${BACKEND:-openrouter}"
-PERSONA_IDS="${PERSONA_IDS:-18}"          # smallest chat history in the 10p split
+PERSONA_IDS="${PERSONA_IDS:-0,1,10,11,18,20,21,30,40,41}"  # all 10 personas with committed 32k chat histories
 MAX_ITEMS="${MAX_ITEMS:-}"                # empty = all questions for the persona
 RETRIEVE_K="${RETRIEVE_K:-10}"
 PATCH_TOP_K="${PATCH_TOP_K:-3}"
