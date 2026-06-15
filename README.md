@@ -1,3 +1,19 @@
+## Implementation notes
+
+A minimal, CPU-only reproduction of the paper's core claim on the smallest self-contained subset (PersonaMem-Evo) lives in `run.sh` at the repo root.
+
+```bash
+OPENROUTER_API_KEY=<key> bash run.sh
+```
+
+It runs both agents (robust baseline vs EvoMem patch memory) over persona 18 of `EvoMem-PersonaMem-Evo/data/personamem-evo-10p.csv` using `openai/gpt-4o-mini` via OpenRouter, then writes a head-to-head `EVAL.md`. Expect ~29 minutes on an 8 vCPU CPU box (no GPU) for under ~$1.
+
+- **Verdict: reproduced.** EvoMem beats the baseline on MCQ step accuracy (0.353 to 0.392, +3.9pp) and on chain exact-match (0.273 to 0.364, +9.1pp); the chain gain exceeds the step gain, matching the paper.
+- The patch mechanism genuinely fires: a separate patch-memory pass over all messages plus patch retrieval (top 3, similarity >= 0.4) at answer time.
+- Two fixes a future runner needs: the default model list names unreleased models (override with a real one via `MODEL_LIST`), and install CPU-only torch before `requirements.txt` to avoid CUDA wheels.
+
+---
+
 # EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments
 
 ### Benchmarking and improving LLM agents under persistent environment evolution.
