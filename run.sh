@@ -81,6 +81,12 @@ export RESUME=1 FORCE_REINGEST_PATCHES=0
 [[ -n "$MAX_ITEMS" ]] && export MAX_ITEMS
 
 echo ">> running robust baseline + EvoMem patch (this calls the hosted LLM)…"
+# Use the two-stage gated patch policy (PATCH_GATING_PROMPT →
+# PATCH_DETAIL_REVISION_PROMPT) in PersonaPatchAgent._answer_with_patch_policy
+# instead of unconditionally injecting the top-3 retrieved patches. This tests
+# whether gating cuts the off-topic-patch regressions called out in
+# patch_prompts.py while also reducing prompt tokens.
+export PATCH_USAGE="${PATCH_USAGE:-gated}"
 bash scripts/run_persona_baseline_patch.sh both
 
 # ---- locate the two result CSVs ---------------------------------------------
